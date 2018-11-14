@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Andy Beet" />
+
+<meta name="date" content="2018-11-14" />
+
+<title>cfdbs usage</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">cfdbs usage</h1>
+<h4 class="author"><em>Andy Beet</em></h4>
+<h4 class="date"><em>2018-11-14</em></h4>
+
+
+
+<p>The cfdbs package contains a set of tools to easily extract information from key tables in the commercial fisheries database and the landings data in ADIOS. These tools free up the user to concentrate on data analysis and visualization instead of data extraction. The following sections describe how to use these tools. Included in this package are the functions:</p>
+<ul>
+<li><code>connect_to_database</code></li>
+<li><code>get_species</code></li>
+<li><code>get_areas</code></li>
+<li><code>get_gears</code></li>
+<li><code>get_ports</code></li>
+<li><code>get_locations</code></li>
+<li><code>get_vessels</code></li>
+<li><code>get_landings</code></li>
+<li><code>get_anything_sql</code></li>
+</ul>
+<p>and two data sets:</p>
+<ul>
+<li><code>fleets.RData</code></li>
+<li><code>EPUs.RData</code></li>
+</ul>
+<div id="connect_to_database" class="section level2">
+<h2>connect_to_database</h2>
+<p>Before any of the functions in this package can be used a connection to the database is required. This is easily achieved by</p>
+<pre><code>channel &lt;- connect_to_database(server=&quot;sole&quot;&quot;,&quot;user_name&quot;)</code></pre>
+<p>substitute your username for “user_name”. You’ll be prompted to enter your password for server access. Upon success the RODBC object variable,</p>
+<pre><code>channel</code></pre>
+<p>will contain all the information you’ll need to run the following functions.</p>
+<p>Note: You will also need to have an oracle client installed on your machine. If you use 64 bit Rstudio, you’ll need a 64 bit client. If you use 32 bit Rstudio, you’ll need a 32 bit client.</p>
+</div>
+<div id="get_species" class="section level2">
+<h2>get_species</h2>
+<p>Easy access to the complete list of species currently in the database. To obtain a complete list of species information:</p>
+<pre><code>speciesData &lt;- get_species(channel)</code></pre>
+<p><code>speciesData</code> is a list containing 3 elements:</p>
+<pre><code>data, sql, colNames</code></pre>
+<p><code>data</code> contains the data pull <code>sql</code> is the sql statement that generated the data <code>colNames</code> is a vector of the tables column names</p>
+<p>To extract all information relating to cod (81) use any of the following:</p>
+<pre><code>speciesData &lt;- get_species(channel,81)
+speciesData &lt;- get_species(channel,species = 81)
+speciesData &lt;- get_species(channel,species = '081')
+speciesData &lt;- get_species(channel,'081')</code></pre>
+<p>The functions: <code>get_areas</code>, <code>get_gears</code>, <code>get_ports</code>, <code>get_vessels</code>, <code>get_locations</code> behave in the same way.</p>
+<p>For information on the meaning of the field names for any of the tables please see the documentation listed at <a href="http://nova.nefsc.noaa.gov/datadict/" class="uri">http://nova.nefsc.noaa.gov/datadict/</a></p>
+</div>
+<div id="supplied-data" class="section level2">
+<h2>supplied data</h2>
+<p>Two data set are available <code>EPUs</code> and <code>fleets</code>. These data sets are structured in the same form. They comprise a lists of 3 elements, <code>data</code>, <code>names</code>,<code>codes</code></p>
+<p>The <code>EPUs</code> data categorises the NAFO statistical areas into geographical regions.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">EPUs
+<span class="co">#&gt; $data</span>
+<span class="co">#&gt; $data$MAB</span>
+<span class="co">#&gt;  [1] 537 539 600 611 612 613 614 615 616 621 622 623 625 626 627 631 632</span>
+<span class="co">#&gt; [18] 635 636</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$GB</span>
+<span class="co">#&gt;  [1] 521 522 523 524 525 526 538 551 552 561 562</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$GOM</span>
+<span class="co">#&gt; [1] 510 512 513 514 515</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$SS</span>
+<span class="co">#&gt; [1] 463 464 465 466 467 511</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $names</span>
+<span class="co">#&gt; [1] &quot;MAB&quot; &quot;GB&quot;  &quot;GOM&quot; &quot;SS&quot; </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $codes</span>
+<span class="co">#&gt;  [1] 463 464 465 466 467 510 511 512 513 514 515 521 522 523 524 525 526</span>
+<span class="co">#&gt; [18] 537 538 539 551 552 561 562 600 611 612 613 614 615 616 621 622 623</span>
+<span class="co">#&gt; [35] 625 626 627 631 632 635 636</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $descriptions</span>
+<span class="co">#&gt;            MAB           GB           GOM            SS</span>
+<span class="co">#&gt; 1 Mid-Atlantic Georges Bank Gulf of Maine Scotian Shelf</span></code></pre></div>
+<p>The <code>fleets</code> data categorises the gear characteristics into defined fishing fleets.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fleets
+<span class="co">#&gt; $data</span>
+<span class="co">#&gt; $data$Seines</span>
+<span class="co">#&gt; [1]  7  9 16 24 36</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$BT.lgMesh</span>
+<span class="co">#&gt; [1]  5 15 35</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$BT.smMesh</span>
+<span class="co">#&gt; [1]  5 15 35</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Midwater.ShrimpT</span>
+<span class="co">#&gt; [1] -1 12 17 37 45</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$GN.Fixed</span>
+<span class="co">#&gt; [1] 10 50 52</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$GN.Drift</span>
+<span class="co">#&gt; [1] 11 51</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$LL.Bottom</span>
+<span class="co">#&gt; [1] 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$LL.Pelagic</span>
+<span class="co">#&gt; [1] 4</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Handline.Jig</span>
+<span class="co">#&gt; [1]  2 66</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Lobster</span>
+<span class="co">#&gt; [1] 20 21</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Misc.Traps</span>
+<span class="co">#&gt; [1]  8 14 18 19 26 27 34</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Dredge</span>
+<span class="co">#&gt; [1] 13 28</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Unknown.Misc</span>
+<span class="co">#&gt;  [1]  3 22 23 25 29 31 32 33 39 42 43 44 53 81 99</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Troll.Line</span>
+<span class="co">#&gt; [1] 6</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Crab.Pots</span>
+<span class="co">#&gt; [1] 30</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Clam.Dredge</span>
+<span class="co">#&gt; [1] 38 40</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $data$Tongs.Grabs</span>
+<span class="co">#&gt; [1] 41</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $names</span>
+<span class="co">#&gt;  [1] &quot;Seines&quot;           &quot;BT.lgMesh&quot;        &quot;BT.smMesh&quot;       </span>
+<span class="co">#&gt;  [4] &quot;Midwater.ShrimpT&quot; &quot;GN.Fixed&quot;         &quot;GN.Drift&quot;        </span>
+<span class="co">#&gt;  [7] &quot;LL.Bottom&quot;        &quot;LL.Pelagic&quot;       &quot;Handline.Jig&quot;    </span>
+<span class="co">#&gt; [10] &quot;Lobster&quot;          &quot;Misc.Traps&quot;       &quot;Dredge&quot;          </span>
+<span class="co">#&gt; [13] &quot;Unknown.Misc&quot;     &quot;Troll.Line&quot;       &quot;Crab.Pots&quot;       </span>
+<span class="co">#&gt; [16] &quot;Clam.Dredge&quot;      &quot;Tongs.Grabs&quot;     </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $codes</span>
+<span class="co">#&gt;  [1] -1  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22</span>
+<span class="co">#&gt; [24] 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45</span>
+<span class="co">#&gt; [47] 50 51 52 53 66 81 99</span></code></pre></div>
+</div>
+<div id="get_landings" class="section level2">
+<h2>get_landings</h2>
+<p>This function makes use of all of the above functions and datasets. We use it to access the landings data and select whatever we wish to extract. For example, suppose we want to extract all landings data for:</p>
+<ul>
+<li>species = cod</li>
+<li>fishing gear defined as <code>Seines</code></li>
+<li>in the Georges Bank EPU defined as <code>GB</code></li>
+<li>for the years 1994 to 2000</li>
+<li>for all tonnage classs vessels</li>
+</ul>
+<p>This is achieved by</p>
+<pre><code>landingsData &lt;- get_landings(channel,area=EPUs$data[[&quot;GB&quot;]],gear=fleets$data[[&quot;Seines&quot;]],year=c(1994:2000),species=81,tonnage=&quot;all&quot;)</code></pre>
+<p>the resulting sql Statement is returned in <code>$sql</code></p>
+<pre><code>select year, month, day, negear2, toncl2, nespp3,nespp4, area, ntrips, mesh,df, da , spplndlb,spplivlb, trplndlb,trplivlb  \n          from stockeff.mv_cf_landings where  (area in ('521', '522', '523', '524', '525', '526', '538', '551', '552', '561', '562')) and  (negear2 in ('07', '09', '16', '24', '36')) and  (nespp3 in ('081')) and  (year in ('1994', '1995', '1996', '1997', '1998', '1999', '2000'))</code></pre>
+<p>and the resulting data pull is returned in <code>$data</code>. It contains 578 rows.</p>
+</div>
+<div id="get_anything_sql" class="section level2">
+<h2>get_anything_sql</h2>
+<p>Allows the user to specify their own sql statement to access anything they want from any table in the database.</p>
+<pre><code>get_anything_sql(channel,sqlStatement)</code></pre>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
