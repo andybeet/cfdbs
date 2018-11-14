@@ -1,0 +1,5 @@
+names,LgMesh,smMesh,GNLLFixed,GNLLPel,Pelagic
+gear_1,BT.lgMesh,BT.SmMesh,LL.Bottom,LL.Pelagic,Midwater
+gear_2,,,GN.Fixed,GN.Drift,seines
+mesh,>5.5,<=5.5,,,
+ton,6,,,,

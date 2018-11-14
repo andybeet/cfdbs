@@ -1,0 +1,124 @@
+---
+title: "cfdbs package usage"
+author: "Andy Beet"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+     toc: no
+     float_toc : yes
+     smooth_scrol: yes
+vignette: >
+  %\VignetteIndexEntry{cfdbs usage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+library(cfdbs)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The cfdbs package contains a set of tools to easily extract information from key tables in the commercial fisheries database and the landings data in ADIOS. These tools free up the user to concentrate on data analysis and visualization instead of data extraction. The following sections describe how to use these tools. Included in this package are the functions:
+
+* `connect_to_database`
+* `get_species`
+* `get_areas`
+* `get_gears`
+* `get_ports`
+* `get_locations`
+* `get_vessels`
+* `get_landings`
+* `get_anything_sql`
+
+and two data sets:
+
+* `fleets.RData`
+* `EPUs.RData`
+
+
+## connect_to_database
+
+Before any of the functions in this package can be used a connection to the database is required. This is easily achieved by
+
+
+    channel <- connect_to_database(server="sole"","user_name")
+
+substitute your username for "user_name". You'll be prompted to enter your password for server access. Upon success the RODBC object variable, 
+
+    channel
+    
+will contain all the information you'll need to run the following functions.
+
+Note: You will also need to have an oracle client installed on your machine. If you use 64 bit Rstudio, you'll need a 64 bit client. If you use 32 bit Rstudio, you'll need a 32 bit client.
+
+## get_species
+
+Easy access to the complete list of species currently in the database.
+To obtain a complete list of species information:
+
+    speciesData <- get_species(channel)
+    
+`speciesData` is a list containing 3 elements:
+
+    data, sql, colNames
+    
+`data` contains the data pull
+`sql` is the sql statement that generated the data
+`colNames` is a vector of the tables column names
+
+To extract all information relating to cod (81) use any of the following:
+
+    speciesData <- get_species(channel,81)
+    speciesData <- get_species(channel,species = 81)
+    speciesData <- get_species(channel,species = '081')
+    speciesData <- get_species(channel,'081')
+    
+The functions: `get_areas`, `get_gears`, `get_ports`, `get_vessels`, `get_locations` behave in the same way.
+
+For information on the meaning of the field names for any of the tables please see the documentation listed at http://nova.nefsc.noaa.gov/datadict/
+
+
+## supplied data
+
+Two data set are available `EPUs` and `fleets`. These data sets are structured in the same form. They comprise a lists of 3 elements, `data`, `names`,`codes`
+
+The `EPUs` data categorises the NAFO statistical areas into geographical regions.
+```{r, data1 }
+EPUs
+```
+The `fleets` data categorises the gear characteristics into defined fishing fleets.
+```{r, data2 }
+fleets
+```
+
+
+## get_landings
+
+This function makes use of all of the above functions and datasets. We use it to access the landings data and select whatever we wish to extract. For example, suppose we want to extract all landings data for:
+
+* species = cod
+* fishing gear defined as `Seines`
+* in the Georges Bank EPU defined as `GB` 
+* for the years 1994 to 2000
+* for all tonnage classs vessels
+
+This is achieved by 
+
+    landingsData <- get_landings(channel,area=EPUs$data[["GB"]],gear=fleets$data[["Seines"]],year=c(1994:2000),species=81,tonnage="all")
+
+the resulting sql Statement is returned in `$sql`
+
+    select year, month, day, negear2, toncl2, nespp3,nespp4, area, ntrips, mesh,df, da , spplndlb,spplivlb, trplndlb,trplivlb  \n          from stockeff.mv_cf_landings where  (area in ('521', '522', '523', '524', '525', '526', '538', '551', '552', '561', '562')) and  (negear2 in ('07', '09', '16', '24', '36')) and  (nespp3 in ('081')) and  (year in ('1994', '1995', '1996', '1997', '1998', '1999', '2000'))
+
+and the resulting data pull is returned in `$data`. It contains 578 rows.
+
+## get_anything_sql
+
+Allows the user to specify their own sql statement to access anything they want from any table in the database.
+
+    get_anything_sql(channel,sqlStatement)
+
+

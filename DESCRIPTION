@@ -1,0 +1,23 @@
+Package: cfdbs
+Type: Package
+Title: Pulls and analyses data from the NEFSC commercial database
+Version: 0.1.0
+Author: c(person("Andy", "Beet", email = "andrew.beet@noaa.gov", role = c("aut"", "cre")),
+				person("Laurel", "Col", email = "laurel.col@noaa.gov", role = c("aut")),
+				person("Sean", "Lucey", email = "sean.lucey@noaa.gov", role = c("aut")))
+Maintainer: Andy Beet <andrew.beet@noaa.gov>
+Description: The NEFSC Commercial database holds data from 1964-present. The ADIOS system pulls together
+    data from all of the yearly tables cfdett and cfdetts into one materialized view.
+    This package takes advantage of ADIOS to efficiently explore the data.
+    Pull data by trip, statistical area, species, gear type, etc.
+    Examine contents of supporting tables in cfdbs.
+    Create plots of data pulls
+License: file LICENSE -  Strictly for NOAA employees and contractors with database privilages
+Encoding: UTF-8
+LazyData: true
+Imports: RODBC (>= 1.3.15),
+         getPass (>= 0.2.2)
+RoxygenNote: 6.1.0
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
