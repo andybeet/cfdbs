@@ -1,5 +1,5 @@
 ---
-title: "cfdbs package usage"
+title: "cfdbs usage"
 author: "Andy Beet"
 date: "`r Sys.Date()`"
 output:
