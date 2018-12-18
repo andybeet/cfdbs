@@ -7,11 +7,11 @@
 #' @param sqlStatement an sql statement (optional)
 #' @return A list is returned:
 #'
-#'  - \code{locations} containing the result of the executed \code{sqlStatement} and
+#'    \item{locations}{containing the result of the executed \code{sqlStatement} }
 #'
-#'  -  \code{sql} containing the \code{sqlStatement} itself
+#'    \item{sql}{containing the \code{sqlStatement} itself}
 #'
-#'  - \code{colNames} a vector of the table's column names
+#'    \item{colNames}{a vector of the table's column names}
 #'
 #'If no \code{sqlStatement} is provided the default sql statement "\code{select * from cfdbs.loc}" is used
 #'

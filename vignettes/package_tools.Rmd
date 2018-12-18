@@ -73,6 +73,8 @@ To extract all information relating to cod (81) use any of the following:
     speciesData <- get_species(channel,species = 81)
     speciesData <- get_species(channel,species = '081')
     speciesData <- get_species(channel,'081')
+    speciesData <- get_species(channel,'Cod')
+    speciesData <- get_species(channel,'CO')
     
 The functions: `get_areas`, `get_gears`, `get_ports`, `get_vessels`, `get_locations` behave in the same way.
 

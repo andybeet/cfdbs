@@ -31,7 +31,7 @@ A list is returned:
 }
 \description{
 Extract landings information (\code{trplndlb},\code{trplivlb},\code{spplndlb},\code{spplivlb}) in lbs from the databse ADIOS! This function requires no knowledge of sql.
-NOTE: Eventually hope to pull \code{numlen}, and \code{len} also. Not in ADIOS
+NOTE: Eventually hope to pull \code{numlen}, and \code{len} also. This resides in a different table in ADIOS
 For direct sql usage please see \code{\link{get_anything_sql}} function
 }
 \section{Reference}{

@@ -10,16 +10,16 @@ get_species(channel, species = "all")
 \item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
 
 \item{species}{a specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
-Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement.}
+Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings.}
 }
 \value{
 A list is returned:
 
-  \code{species} containing the result of the executed \code{$sql} statement
+  \item{species}{containing the result of the executed \code{$sql} statement}
 
- \code{sql} containing the sql call
+  \item{sql}{containing the sql call}
 
-  \code{colNames} a vector of the table's column names
+  \item{colNames}{a vector of the table's column names}
 
 The default sql statement "\code{select * from cfdbs.cfspp}" is used
 }
@@ -42,13 +42,17 @@ get_species(channel)
 channel <- connect_to_database(server="name_of_server",uid="individuals_username")
 get_species(channel,species=81)
 
+# extracts info for cod ("COD") 
+channel <- connect_to_database(server="name_of_server",uid="individuals_username")
+get_species(channel,"cod") or
+get_species(channel,"co") or
+get_species(channel,"COD")
+
+
 # extracts info for cod (081)  and bluefish (023)
 channel <- connect_to_database(server="name_of_server",uid="individuals_username")
 sqlStatement <- "select * from cfdbs.cfspp"
 get_species(channel,species= c("081","023"))
-
-
-
 }
 
 }

@@ -10,16 +10,16 @@ get_gears(channel, gears = "all")
 \item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
 
 \item{gears}{specific gear code or set of codes. Either numeric or character vector. Defaults to "all" gears.
-Numeric codes are converted to VARCHAR2(2 BYTE) when creating the sql statement.}
+Numeric codes are converted to VARCHAR2(2 BYTE) when creating the sql statement. Character codes are short character strings referencing GEARNM field.}
 }
 \value{
 A list is returned:
 
-  \code{gears} containing the result of the executed \code{sqlStatement} and
+  \item{gears}{containing the result of the executed \code{sqlStatement}}
 
-  \code{sql} containing the sql call
+  \item{sql}{containing the sql call}
 
-  \code{colNames} a vector of the table's column names
+  \item{colNames}{a vector of the table's column names}
 
 If no \code{sqlStatement} is provided the default sql statement "\code{select * from cfdbs.gear}" is used
 }
@@ -44,6 +44,11 @@ get_gears(channel,gears=c(5,6))
 # extracts info based on gear types (5,6) (character)
 channel <- connect_to_database(server="name_of_server",uid="individuals_username")
 get_gears(channel,gears=c("05","06"))
+
+# extracts info for "Seines"
+channel <- connect_to_database(server="name_of_server",uid="individuals_username")
+get_gears(channel,"seines") or
+
 }
 
 }

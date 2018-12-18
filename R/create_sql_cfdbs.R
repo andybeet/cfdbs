@@ -2,7 +2,7 @@
 #
 # seee get_species, get_gears etc
 
-create_sql_cfdbs <- function(dataName,fieldName,dataType,defaultSqlStatement) {
+create_sql_cfdbs <- function(dataName,fieldName,fieldName2,dataType,defaultSqlStatement) {
   
   sqlStatement <- defaultSqlStatement
   
@@ -17,6 +17,9 @@ create_sql_cfdbs <- function(dataName,fieldName,dataType,defaultSqlStatement) {
     sqlStatement <- paste(sqlStatement,"where",where,";")
   } else if (dataName == "all") {
     # we use default sqlStament
+  } else if (suppressWarnings(is.na(as.numeric(dataName)))) {# species name
+    where <-  paste0(fieldName2," like ","'%",toupper(dataName),"%'")
+    sqlStatement <- paste(sqlStatement,"where",where,";")
   } else { # single character species id
     str <- paste0("'", dataName, "'", collapse=", ")
     where <-  paste0(" (",fieldName," in (",str,"))")
