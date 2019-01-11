@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_anything_sql.R
 \name{get_anything_sql}
 \alias{get_anything_sql}
-\title{Extract anything from Adios landings!}
+\title{Extract anything from ADIOS! or CFDBS}
 \usage{
 get_anything_sql(channel, sqlStatement)
 }

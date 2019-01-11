@@ -1,4 +1,4 @@
-#' EPU designations by statistical areas
+#' EPU designations by statistical areas. (CFDBS)
 #'
 #' A list of 4 Ecological Production Units (EPUs) and the statistical areas that comprise each area
 #'

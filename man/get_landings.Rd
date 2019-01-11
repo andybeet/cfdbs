@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_landings.R
 \name{get_landings}
 \alias{get_landings}
-\title{Extract landings data from Adios!}
+\title{Extract landings data from ADIOS! (help from CFDBS)}
 \usage{
 get_landings(channel, area = "all", gear = "all", year = 1994,
   tonnage = "all", species = "all")

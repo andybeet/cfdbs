@@ -1,4 +1,4 @@
-#' Fleet structure and gear type associations
+#' Fleet structure and gear type associations (CFDBS)
 #'
 #' A list of 17 fishing fleets encompassing all 53 gear types
 #'

@@ -3,7 +3,7 @@
 \docType{data}
 \name{fleets}
 \alias{fleets}
-\title{Fleet structure and gear type associations}
+\title{Fleet structure and gear type associations (CFDBS)}
 \format{A list containing 3 elements
 \describe{
     \item{codes}{a vector of unique gear codes}

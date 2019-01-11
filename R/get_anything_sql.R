@@ -1,4 +1,4 @@
-#' Extract anything from Adios landings!
+#' Extract anything from ADIOS! or CFDBS
 #'
 #'Extract any information from the landings data compiled in ADIOS! This function is for people who know sql and understand the database well enough
 #'to write their own sql statements.

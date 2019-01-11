@@ -1,4 +1,4 @@
-#' Extract landings data from Adios!
+#' Extract landings data from ADIOS! (help from CFDBS)
 #'
 #'Extract landings information (\code{trplndlb},\code{trplivlb},\code{spplndlb},\code{spplivlb}) in lbs from the databse ADIOS! This function requires no knowledge of sql.
 #'NOTE: Eventually hope to pull \code{numlen}, and \code{len} also. This resides in a different table in ADIOS

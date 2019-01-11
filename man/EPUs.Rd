@@ -3,7 +3,7 @@
 \docType{data}
 \name{EPUs}
 \alias{EPUs}
-\title{EPU designations by statistical areas}
+\title{EPU designations by statistical areas. (CFDBS)}
 \format{A list containing 4 elements
 \describe{
     \item{codes}{a vector of unique statistical areas}
