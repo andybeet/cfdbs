@@ -25,7 +25,7 @@
 #'@section Reference:
 #'Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field name explanations
 #'
-#' @seealso \code{\link{connectToDatabase}}, \code{\link{get_landings}}
+#' @seealso \code{\link{connect_to_database}}, \code{\link{get_landings}}
 #'
 #' @examples
 #' \dontrun{
@@ -36,11 +36,10 @@
 #' sqlStatement <- "select year, month, nespp3, negear2, toncl2, trplndlb, area  from stockeff.mv_cf_landings
 #'  where  (area in (500,600))  and (negear2 in (1,2,10)) and (nespp3 in 81) and (year in ('1999')) and (toncl2 like '1%');"
 #'
-#' get_sanything_sql(channel,sqlStatement)
+#' get_anything_sql(channel,sqlStatement)
 #'}
 #'
 #' @export
-#'
 
 get_anything_sql <- function(channel,sqlStatement) {
 
