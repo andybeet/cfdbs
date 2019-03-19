@@ -71,7 +71,7 @@ get_landings <- function(channel,area="all",gear="all",year=1994,tonnage="all",s
   #  need to have length and numlen in ADIOS for comlens script to work
 
   # eventually user will be able to pass these variables
-  sqlStatement <- "select year, month, day, negear2, toncl2, nespp3,nespp4, area, ntrips, mesh,df, da , spplndlb,spplivlb, trplndlb,trplivlb  
+  sqlStatement <- "select year, month, day, negear, negear2, toncl2, nespp3,nespp4, area, ntrips, mesh,df, da , spplndlb,spplivlb, trplndlb,trplivlb,GIS_LAT,GIS_LON  
                     from stockeff.mv_cf_landings"
 
   sqlStatement <- paste(sqlStatement,whereStr)
