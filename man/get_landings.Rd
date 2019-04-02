@@ -23,7 +23,7 @@ get_landings(channel, area = "all", gear = "all", year = 1994,
 \value{
 A list is returned:
 
-  \code{data}      containing the result of the data pull
+  \code{data}      containing the result of the data pull (year, month, day, negear, negear2, toncl2, nespp3, nespp4, market_code, area, ntrips, mesh, df, da, spplndlb, spplivlb, trplndlb, trplivlb, GIS_LAT, GIS_LON  )
 
   \code{sql}  the resulting sql statement based on user input
 
