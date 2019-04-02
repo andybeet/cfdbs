@@ -24,8 +24,8 @@
 #'Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field name explanations
 #'
 #'@section Warning:
-#'You will need to obtain read only privilages to access ADIOS!
-#'The ADIOS database contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
+#'You will need to obtain read only privilages to access ADIOS! 
+#'The ADIOS landings database (MV_CF_Landings) contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
 #'
 #'@seealso \code{\link{connect_to_database}}, \code{\link{get_anything_sql}}
 #'

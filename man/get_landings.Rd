@@ -10,15 +10,15 @@ get_landings(channel, area = "all", gear = "all", year = 1994,
 \arguments{
 \item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
 
-\item{tonnage}{a numerical vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc}
+\item{tonnage}{a numeric vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc}
 
-\item{species}{a numerical list of species (nespp3)}
+\item{species}{a numeric list of species (nespp3)}
 
 \item{areas}{a numeric vector of statistical areas (area)}
 
-\item{gears}{a numerical vector of gear types (negear2)}
+\item{gears}{a numeric vector of gear types (negear2)}
 
-\item{years}{a numerical vector containing the years to search over}
+\item{years}{a numeric vector containing the years to search over}
 }
 \value{
 A list is returned:
@@ -41,8 +41,8 @@ Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field n
 
 \section{Warning}{
 
-You will need to obtain read only privilages to access ADIOS!
-The ADIOS database contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
+You will need to obtain read only privilages to access ADIOS! 
+The ADIOS landings database (MV_CF_Landings) contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
 }
 
 \examples{
