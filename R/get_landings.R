@@ -7,10 +7,10 @@
 #'
 #'@param channel an RODBC object (see \code{\link{connect_to_database}})
 #'@param areas a numeric vector of statistical areas (area)
-#'@param gears a numerical vector of gear types (negear2)
-#'@param years a numerical vector containing the years to search over
-#'@param tonnage a numerical vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc
-#'@param species a numerical list of species (nespp3)
+#'@param gears a numeric vector of gear types (negear2)
+#'@param years a numeric vector containing the years to search over
+#'@param tonnage a numeric vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc
+#'@param species a numeric list of species (nespp3)
 #'
 #'@return A list is returned:
 #'
