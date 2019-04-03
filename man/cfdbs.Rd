@@ -6,11 +6,11 @@
 \alias{cfdbs-package}
 \title{cfdbs: Extract info from Database}
 \description{
-Tools to aid in extraction of data from the cfdbs database and ADIOS!
+Tools to aid in extraction of data from the cfdbs database and ADIOS! (MV_CF_Landings)
 }
 \details{
 \itemize{
-\item Get_ functions to access, species coes, gear codes, landings etc.
+\item Get_ functions to access, species codes, gear codes, landings etc.
 \item Bundled data aggregating area codes to regions and gear codes to fleets
 \item Secure login to servers
 }

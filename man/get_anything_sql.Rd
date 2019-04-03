@@ -16,7 +16,7 @@ A list is returned:
 
  - \code{data} containing the result of the executed \code{sqlStatement} and
 
- -  \code{sql} containing the \code{sqlStatement} itself
+ - \code{sql} containing the \code{sqlStatement} itself
 
  - \code{colNames} a vector of the table's column names
 
@@ -24,14 +24,13 @@ A list is returned:
 There is no default sql statement.
 }
 \description{
-Extract any information from the landings data compiled in ADIOS! This function is for people who know sql and understand the database well enough
-to write their own sql statements.
-For all others, please see the \code{\link{get_landings}} function
+Extract any information from the landings data compiled in ADIOS! (MV_CF_Landings). This function is for people who know sql and understand the database well enough
+to write their own sql statements. For all others, please see the \code{\link{get_landings}} function
 }
 \section{Warning}{
 
 You will need to obtain read only privilages to access ADIOS!
-The ADIOS database contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
+The ADIOS (MV_CF_Landings) database contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
 }
 
 \section{Reference}{
