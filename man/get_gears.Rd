@@ -24,7 +24,7 @@ A list is returned:
 If no \code{sqlStatement} is provided the default sql statement "\code{select * from cfdbs.gear}" is used
 }
 \description{
-Extract a list of gear types in the NEFSC "Gear" supporting table
+Extract a list of gear types in the NEFSC "GEAR" supporting table
 }
 \section{Reference}{
 
