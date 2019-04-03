@@ -1,6 +1,6 @@
 #' Extract fishing GEAR types from CFDBS
 #'
-#'Extract a list of gear types in the NEFSC "Gear" supporting table
+#'Extract a list of gear types in the NEFSC "GEAR" supporting table
 #'
 #'
 #' @param channel an RODBC object (see \code{\link{connect_to_database}})
