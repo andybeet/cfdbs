@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The cfdbs package contains a set of tools to easily extract information from key tables in the commercial fisheries database and the landings data in ADIOS. These tools free up the user to concentrate on data analysis and visualization instead of data extraction. The following sections describe how to use these tools. Included in this package are the functions:
+The cfdbs package contains a set of tools to easily extract information from key tables in the commercial fisheries database and the landings data in ADIOS (MV_CF_Landings). These tools free up the user to concentrate on data analysis and visualization instead of data extraction. The following sections describe how to use these tools. Included in this package are the functions:
 
 * `connect_to_database`
 * `get_species`
