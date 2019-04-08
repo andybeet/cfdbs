@@ -12,7 +12,7 @@
 #'
 #'@return A list is returned:
 #'
-#'   \code{data}      containing the result of the data pull ( year, month, day, qrt, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, sex  )
+#'   \code{data}      containing the result of the data pull ( year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, sex  )
 #'
 #'   \code{sql}  the resulting sql statement based on user input
 #'
@@ -38,7 +38,7 @@
 #'}
 #'
 #'@export
-#'
+
 
 get_landings_length <- function(channel,area="all",gear="all",year=1994,species="all"){
 
@@ -69,7 +69,7 @@ get_landings_length <- function(channel,area="all",gear="all",year=1994,species=
   #  need to have length and numlen in ADIOS for comlens script to work
 
   # eventually user will be able to pass these variables
-  sqlStatement <- "select year, month, day, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, sex 
+  sqlStatement <- "select year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, sex 
                 from stockeff.mv_cf_len "
 
   sqlStatement <- paste(sqlStatement,whereStr)

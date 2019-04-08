@@ -21,7 +21,7 @@ get_landings_length(channel, area = "all", gear = "all", year = 1994,
 \value{
 A list is returned:
 
-  \code{data}      containing the result of the data pull ( year, month, day, qrt, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, sex  )
+  \code{data}      containing the result of the data pull ( year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, sex  )
 
   \code{sql}  the resulting sql statement based on user input
 
