@@ -5,12 +5,14 @@
 \title{Extract landings data by length from ADIOS! (help from CFDBS)}
 \usage{
 get_landings_length(channel, area = "all", gear = "all", year = 1994,
-  species = "all")
+  species = "all", species_itis = FALSE)
 }
 \arguments{
 \item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
 
-\item{species}{a numeric list of species (nespp3)}
+\item{species}{a numeric list of species (nespp3 or species_itis)}
+
+\item{species_itis}{boolean value. indicating if species values are nespp3 (FALSE) or species_itis (TRUE).Default = FALSE}
 
 \item{areas}{a numeric vector of statistical areas (area)}
 
@@ -21,7 +23,7 @@ get_landings_length(channel, area = "all", gear = "all", year = 1994,
 \value{
 A list is returned:
 
-  \code{data}      containing the result of the data pull ( year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, numsamp, sex  )
+  \code{data}      containing the result of the data pull ( year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, species_itis, market_code, area, spplndlb, length, numlen, numsamp, sex  )
 
   \code{sql}  the resulting sql statement based on user input
 

@@ -5,14 +5,16 @@
 \title{Extract landings data from ADIOS! (help from CFDBS)}
 \usage{
 get_landings(channel, area = "all", gear = "all", year = 1994,
-  tonnage = "all", species = "all")
+  tonnage = "all", species = "all", species_itis = FALSE)
 }
 \arguments{
 \item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
 
 \item{tonnage}{a numeric vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc}
 
-\item{species}{a numeric list of species (nespp3)}
+\item{species}{a numeric list of species (nespp3 or species_itis)}
+
+\item{species_itis}{boolean value. indicating if species values are nespp3 (FALSE) or species_itis (TRUE).Default = FALSE}
 
 \item{areas}{a numeric vector of statistical areas (area)}
 
@@ -23,7 +25,7 @@ get_landings(channel, area = "all", gear = "all", year = 1994,
 \value{
 A list is returned:
 
-  \code{data}      containing the result of the data pull (year, month, day, negear, negear2, toncl2, nespp3, nespp4, market_code, area, ntrips, mesh, df, da, spplndlb, spplivlb, trplndlb, trplivlb, GIS_LAT, GIS_LON  )
+  \code{data}      containing the result of the data pull (year, month, day, negear, negear2, toncl2, nespp3, nespp4, species_itis, market_code, area, ntrips, mesh, df, da, spplndlb, spplivlb, trplndlb, trplivlb, GIS_LAT, GIS_LON  )
 
   \code{sql}  the resulting sql statement based on user input
 

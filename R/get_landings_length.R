@@ -8,11 +8,12 @@
 #'@param areas a numeric vector of statistical areas (area)
 #'@param gears a numeric vector of gear types (negear2)
 #'@param years a numeric vector containing the years to search over
-#'@param species a numeric list of species (nespp3)
+#'@param species a numeric list of species (nespp3 or species_itis)
+#'@param species_itis boolean value. indicating if species values are nespp3 (FALSE) or species_itis (TRUE).Default = FALSE
 #'
 #'@return A list is returned:
 #'
-#'   \code{data}      containing the result of the data pull ( year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, numsamp, sex  )
+#'   \code{data}      containing the result of the data pull ( year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, species_itis, market_code, area, spplndlb, length, numlen, numsamp, sex  )
 #'
 #'   \code{sql}  the resulting sql statement based on user input
 #'
@@ -40,7 +41,7 @@
 #'@export
 
 
-get_landings_length <- function(channel,area="all",gear="all",year=1994,species="all"){
+get_landings_length <- function(channel,area="all",gear="all",year=1994,species="all",species_itis=FALSE){
 
   # create an SQL query to extract all relavent data from tables
   # this will require the user to enter statistical area, EPU, fleet characteristics, species etc.
@@ -50,7 +51,11 @@ get_landings_length <- function(channel,area="all",gear="all",year=1994,species=
 
   whereVec[[1]] <-  createString(itemName="area",area,convertToCharacter=TRUE,numChars=3)
   whereVec[[2]] <-  createString(itemName="negear2",gear,convertToCharacter=TRUE,numChars=2)
-  whereVec[[3]] <-  createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
+  if (species_itis == FALSE) {
+    whereVec[[3]] <-  createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
+  } else {
+    whereVec[[3]] <-  createString(itemName="species_itis",species,convertToCharacter=TRUE,numChars=6)
+  }
   whereVec[[4]] <-  createString(itemName="year",year,convertToCharacter=TRUE,numChars=4)
   
 
@@ -69,7 +74,7 @@ get_landings_length <- function(channel,area="all",gear="all",year=1994,species=
   #  need to have length and numlen in ADIOS for comlens script to work
 
   # eventually user will be able to pass these variables
-  sqlStatement <- "select year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, market_code, area, spplndlb, length, numlen, numsamp, sex 
+  sqlStatement <- "select year, month, day, permit, qtr, negear, negear2, nespp3, nespp4, species_itis, market_code, area, spplndlb, length, numlen, numsamp, sex 
                 from stockeff.mv_cf_len "
 
   sqlStatement <- paste(sqlStatement,whereStr)

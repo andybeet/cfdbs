@@ -10,11 +10,12 @@
 #'@param gears a numeric vector of gear types (negear2)
 #'@param years a numeric vector containing the years to search over
 #'@param tonnage a numeric vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc
-#'@param species a numeric list of species (nespp3)
+#'@param species a numeric list of species (nespp3 or species_itis)
+#'@param species_itis boolean value. indicating if species values are nespp3 (FALSE) or species_itis (TRUE).Default = FALSE
 #'
 #'@return A list is returned:
 #'
-#'   \code{data}      containing the result of the data pull (year, month, day, negear, negear2, toncl2, nespp3, nespp4, market_code, area, ntrips, mesh, df, da, spplndlb, spplivlb, trplndlb, trplivlb, GIS_LAT, GIS_LON  )
+#'   \code{data}      containing the result of the data pull (year, month, day, negear, negear2, toncl2, nespp3, nespp4, species_itis, market_code, area, ntrips, mesh, df, da, spplndlb, spplivlb, trplndlb, trplivlb, GIS_LAT, GIS_LON  )
 #'
 #'   \code{sql}  the resulting sql statement based on user input
 #'
@@ -42,7 +43,7 @@
 #'@export
 #'
 
-get_landings <- function(channel,area="all",gear="all",year=1994,tonnage="all",species="all"){
+get_landings <- function(channel,area="all",gear="all",year=1994,tonnage="all",species="all",species_itis=FALSE){
 
   # create an SQL query to extract all relavent data from tables
   # this will require the user to enter statistical area, EPU, fleet characteristics, species etc.
@@ -52,7 +53,11 @@ get_landings <- function(channel,area="all",gear="all",year=1994,tonnage="all",s
 
   whereVec[[1]] <-  createString(itemName="area",area,convertToCharacter=TRUE,numChars=3)
   whereVec[[2]] <-  createString(itemName="negear2",gear,convertToCharacter=TRUE,numChars=2)
-  whereVec[[3]] <-  createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
+  if (species_itis == FALSE) {
+    whereVec[[3]] <-  createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
+  } else {
+    whereVec[[3]] <-  createString(itemName="species_itis",species,convertToCharacter=TRUE,numChars=6)
+  }
   whereVec[[4]] <-  createString(itemName="year",year,convertToCharacter=TRUE,numChars=4)
   whereVec[[5]] <-  createTonnageString(itemName="toncl2",tonnage)
 
@@ -71,7 +76,7 @@ get_landings <- function(channel,area="all",gear="all",year=1994,tonnage="all",s
   #  need to have length and numlen in ADIOS for comlens script to work
 
   # eventually user will be able to pass these variables
-  sqlStatement <- "select year, month, day, negear, negear2, toncl2, nespp3,nespp4, market_code, area, ntrips, mesh,df, da , spplndlb,spplivlb, trplndlb,trplivlb,GIS_LAT,GIS_LON  
+  sqlStatement <- "select year, month, day, negear, negear2, toncl2, nespp3, nespp4, species_itis, market_code, area, ntrips, mesh,df, da , spplndlb,spplivlb, trplndlb,trplivlb,GIS_LAT,GIS_LON  
                     from stockeff.mv_cf_landings"
 
   sqlStatement <- paste(sqlStatement,whereStr)
