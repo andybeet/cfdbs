@@ -101,22 +101,4 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
 }
 
 
-createString <- function(itemName,chosenItem,convertToCharacter,numChars) {
-
-  if (is.numeric(chosenItem) && (convertToCharacter==TRUE)) { # need to convert numeric to character for sql
-    str <- sprintf(paste0("%0",numChars,"d"),chosenItem)
-    str <- paste0("'", str, "'", collapse=", ")
-    itemStr <-  paste0(" (",itemName," in (",str,"))")
-  } else if (is.numeric(chosenItem) && (convertToCharacter==FALSE)) {
-    itemStr <-  paste0(" (",itemName," in (",toString(chosenItem),"))")
-  } else { # not numeric
-    if (tolower(chosenItem)=="all"){
-      itemStr <-  NULL
-    } else {
-      stop(paste0("Not coded for yet -- createString:",itemName," with ",chosenItem))
-    }
-
-  }
-  return(itemStr)
-}
 
