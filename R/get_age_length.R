@@ -85,7 +85,7 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
   #  need to have length and numlen in ADIOS for comlens script to work
 
   # eventually user will be able to pass these variables
-  sqlStatement <- "select year, nespp3, nespp4, species_itis, sex age, length  
+  sqlStatement <- "select year, nespp3, nespp4, species_itis, sex, age, length  
                     from stockeff.mv_cf_age"
 
   sqlStatement <- paste(sqlStatement,whereStr)

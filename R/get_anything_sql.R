@@ -1,7 +1,7 @@
 #' Extract anything from ADIOS! or CFDBS
 #'
-#'Extract any information from the landings data compiled in ADIOS! (MV_CF_Landings). This function is for people who know sql and understand the database well enough
-#'to write their own sql statements. For all others, please see the \code{\link{get_landings}} function
+#'Extract any information from any database. This function is for people who know sql and understand the database well enough
+#'to write their own sql statements. For all others, please see the \code{\link{get_landings}} and other similar functions
 #'
 #'
 #' @param channel an RODBC object (see \code{\link{connect_to_database}})
@@ -18,8 +18,8 @@
 #' There is no default sql statement.
 #'
 #'@section Warning:
-#'You will need to obtain read only privilages to access ADIOS!
-#'The ADIOS (MV_CF_Landings) database contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
+#'You will need to obtain read only privilages to access any of the databases
+#'Some of the databases contains many million records. If you try to pull the entire database it is likely you will run out of memory.
 #'
 #'@section Reference:
 #'Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field name explanations
