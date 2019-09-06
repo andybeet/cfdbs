@@ -2,7 +2,7 @@ Package: cfdbs
 Type: Package
 Title: Pulls and analyses data from the NEFSC commercial database
 Version: 0.1.0
-Author: c(person("Andy", "Beet", email = "andrew.beet@noaa.gov", role = c("aut"", "cre")),
+Author: c(person("Andy", "Beet", email = "andrew.beet@noaa.gov", role = c("aut", "cre")),
 				person("Laurel", "Col", email = "laurel.col@noaa.gov", role = c("aut")),
 				person("Sean", "Lucey", email = "sean.lucey@noaa.gov", role = c("aut")))
 Maintainer: Andy Beet <andrew.beet@noaa.gov>
