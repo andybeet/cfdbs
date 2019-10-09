@@ -4,8 +4,9 @@
 #'
 #'
 #' @param channel an RODBC object (see \code{\link{connect_to_database}})
-#' @param species a specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
-#' Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings.
+#' @param species a specific species code or set of codes. Either numeric or character vector. (NESPP3 codes)
+#' Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement.
+#' A Species common name can also be supplied. The character string is used to pull from SPPNM field. Defaults to "all" species.
 #'
 #' @return A list is returned:
 #'
@@ -54,7 +55,7 @@
 get_species <- function(channel,species="all"){
 
   # creates the sql based on user input
-  sqlStatement <- create_sql_cfdbs(species,fieldName="nespp3",fieldName2="sppnm8",dataType="%03d",defaultSqlStatement="select * from cfdbs.cfspp")
+  sqlStatement <- create_sql_cfdbs(species,fieldName="nespp3",fieldName2="sppnm",dataType="%03d",defaultSqlStatement="select * from cfdbs.cfspp")
 
   query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
 

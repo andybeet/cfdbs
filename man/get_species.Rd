@@ -9,8 +9,9 @@ get_species(channel, species = "all")
 \arguments{
 \item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
 
-\item{species}{a specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
-Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings.}
+\item{species}{a specific species code or set of codes. Either numeric or character vector. (NESPP3 codes)
+Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement and compaared to 
+Species common name can also be supplied. The character string is referenced agains SPPNM field. Defaults to "all" species.}
 }
 \value{
 A list is returned:
