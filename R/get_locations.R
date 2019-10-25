@@ -43,7 +43,7 @@
 #
 get_locations <- function(channel,sqlStatement="select * from cfdbs.loc;"){
 
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   #data <- query[order(query$AREA),]
 
@@ -51,7 +51,7 @@ get_locations <- function(channel,sqlStatement="select * from cfdbs.loc;"){
 
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'LOC' and owner='CFDBS';"
-  colNames <- RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE)
+  colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 

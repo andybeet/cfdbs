@@ -54,14 +54,14 @@ get_gears <- function(channel,gears="all") {
 #    sqlStatement <- paste(sqlStatement,"where",where,";")
 #  }
 
-  sqlStatement <- create_sql_cfdbs(gears,fieldName="negear2",fieldName2="gearnm",dataType="%02d",defaultSqlStatement="select * from cfdbs.gear")
+  sqlStatement <- dbutils::create_sql(gears,fieldName="negear2",fieldName2="gearnm",dataType="%02d",defaultSqlStatement="select * from cfdbs.gear")
   
   
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
 # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'GEAR' and owner='CFDBS';"
-  colNames <- RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE)
+  colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 

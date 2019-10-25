@@ -56,13 +56,13 @@ get_species_itis <- function(channel,species="all",nameType="common_name"){
   # nameType = common_name or scientific_name
 
   # creates the sql based on user input
-  sqlStatement <- create_sql_cfdbs(species,fieldName="species_itis",fieldName2=nameType,dataType="%06d",defaultSqlStatement="select * from cfdbs.species_itis_ne")
+  sqlStatement <- dbutils::create_sql(species,fieldName="species_itis",fieldName2=nameType,dataType="%06d",defaultSqlStatement="select * from cfdbs.species_itis_ne")
 
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'SPECIES_ITIS_NE' and owner='CFDBS';"
-  colNames <- t(RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE))
+  colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 

@@ -45,15 +45,15 @@ get_anything_sql <- function(channel,sqlStatement) {
   if (grepl("\\*",sqlStatement)) {
     warning ("Can not use wild card in sql statement - Your computer memory couldn't handle it!!! ")
     #query <- NULL
-    query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+    query <- DBI::dbGetQuery(channel,sqlStatement)
 
   } else {
-    query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+    query <- DBI::dbGetQuery(channel,sqlStatement)
   }
 
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MV_CF_LANDINGS' and owner='STOCKEFF';"
-  colNames <- RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE)
+  colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
   return (list(data=query, sql = sqlStatement,colNames=colNames))
 

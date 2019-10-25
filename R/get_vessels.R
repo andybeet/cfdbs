@@ -50,7 +50,7 @@ get_vessels <- function(channel,sqlStatement="select * from cfdbs.mstrvess",wher
     sqlStatement <- paste(sqlStatement,"where",where,";")
   }
 
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   #data <- query[order(query$VESSEL),]
 
@@ -58,7 +58,7 @@ get_vessels <- function(channel,sqlStatement="select * from cfdbs.mstrvess",wher
 
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MSTRVESS' and owner='CFDBS';"
-  colNames <- RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE)
+  colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 

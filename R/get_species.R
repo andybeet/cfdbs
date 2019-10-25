@@ -55,13 +55,13 @@
 get_species <- function(channel,species="all"){
 
   # creates the sql based on user input
-  sqlStatement <- create_sql_cfdbs(species,fieldName="nespp3",fieldName2="sppnm",dataType="%03d",defaultSqlStatement="select * from cfdbs.cfspp")
+  sqlStatement <- dbutils::create_sql(species,fieldName="nespp3",fieldName2="sppnm",dataType="%03d",defaultSqlStatement="select * from cfdbs.cfspp")
 
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'CFSPP' and owner='CFDBS';"
-  colNames <- t(RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE))
+  colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 

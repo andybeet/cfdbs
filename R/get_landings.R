@@ -82,11 +82,11 @@ get_landings <- function(channel,area="all",gear="all",year=1994,tonnage="all",s
   sqlStatement <- paste(sqlStatement,whereStr)
 
   # call database
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   # column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MV_CF_LANDINGS' and owner='STOCKEFF';"
-  colNames <- RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE)
+  colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 }

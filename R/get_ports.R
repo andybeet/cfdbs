@@ -50,16 +50,16 @@
 get_ports <- function(channel,ports="all"){
 
   # creates the sql based on user input
-  sqlStatement <- create_sql_cfdbs(ports,fieldName="port",fieldName2="portnm",dataType="%06d",defaultSqlStatement="select * from cfdbs.port")
+  sqlStatement <- dbutils::create_sql(ports,fieldName="port",fieldName2="portnm",dataType="%06d",defaultSqlStatement="select * from cfdbs.port")
 
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   #data <- query[order(query$PORTNM),]
 
   #save(species,file="data/speciesDefinitions.RData")
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'PORT' and owner='CFDBS';"
-  colNames <- t(RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE))
+  colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 

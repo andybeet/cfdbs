@@ -50,13 +50,13 @@
 get_areas <- function(channel,areas="all"){
 
 
-  sqlStatement <- create_sql_cfdbs(areas,fieldName="area",fieldName2="areanm",dataType="%03d",defaultSqlStatement="select * from cfdbs.area")
+  sqlStatement <- dbutils::create_sql(areas,fieldName="area",fieldName2="areanm",dataType="%03d",defaultSqlStatement="select * from cfdbs.area")
   
-  query <- RODBC::sqlQuery(channel,sqlStatement,errors=TRUE,as.is=TRUE)
+  query <- DBI::dbGetQuery(channel,sqlStatement)
 
   # get column names
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'AREA' and owner='CFDBS';"
-  colNames <- t(RODBC::sqlQuery(channel,sqlcolName,errors=TRUE,as.is=TRUE))
+  colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
   return (list(data=query,sql=sqlStatement, colNames=colNames))
 
