@@ -53,11 +53,11 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
   whereVec <- list()
 
   if (species_itis == FALSE) {
-    whereVec[[1]] <-  createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
+    whereVec[[1]] <-  dbutils::createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
   } else {
-    whereVec[[2]] <-  createString(itemName="species_itis",species,convertToCharacter=TRUE,numChars=6)
+    whereVec[[2]] <-  dbutils::createString(itemName="species_itis",species,convertToCharacter=TRUE,numChars=6)
   }
-  whereVec[[3]] <-  createString(itemName="year",year,convertToCharacter=TRUE,numChars=4)
+  whereVec[[3]] <-  dbutils::createString(itemName="year",year,convertToCharacter=TRUE,numChars=4)
   
   # sex conversion
   if (tolower(sex) == "all") {
@@ -97,7 +97,7 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MV_CF_LANDINGS' and owner='STOCKEFF';"
   colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
-  return (list(data=query,sql=sqlStatement, colNames=colNames))
+  return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))
 }
 
 

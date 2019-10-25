@@ -63,7 +63,7 @@ get_species <- function(channel,species="all"){
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'CFSPP' and owner='CFDBS';"
   colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
-  return (list(data=query,sql=sqlStatement, colNames=colNames))
+  return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))
 
 }
 

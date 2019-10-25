@@ -49,14 +49,14 @@ get_landings_length <- function(channel,area="all",gear="all",year=1994,species=
   # list of strings to build where clause in sql statement
   whereVec <- list()
 
-  whereVec[[1]] <-  createString(itemName="area",area,convertToCharacter=TRUE,numChars=3)
-  whereVec[[2]] <-  createString(itemName="negear2",gear,convertToCharacter=TRUE,numChars=2)
+  whereVec[[1]] <-  dbutils::createString(itemName="area",area,convertToCharacter=TRUE,numChars=3)
+  whereVec[[2]] <-  dbutils::createString(itemName="negear2",gear,convertToCharacter=TRUE,numChars=2)
   if (species_itis == FALSE) {
-    whereVec[[3]] <-  createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
+    whereVec[[3]] <-  dbutils::createString(itemName="nespp3",species,convertToCharacter=TRUE,numChars=3)
   } else {
-    whereVec[[3]] <-  createString(itemName="species_itis",species,convertToCharacter=TRUE,numChars=6)
+    whereVec[[3]] <-  dbutils::createString(itemName="species_itis",species,convertToCharacter=TRUE,numChars=6)
   }
-  whereVec[[4]] <-  createString(itemName="year",year,convertToCharacter=TRUE,numChars=4)
+  whereVec[[4]] <- dbutils::createString(itemName="year",year,convertToCharacter=TRUE,numChars=4)
   
 
   # build where clause of SQL statement based on input above
@@ -86,7 +86,7 @@ get_landings_length <- function(channel,area="all",gear="all",year=1994,species=
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MV_CF_LANDINGS' and owner='STOCKEFF';"
   colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
-  return (list(data=query,sql=sqlStatement, colNames=colNames))
+  return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))
 }
 
 

@@ -53,7 +53,7 @@ get_locations <- function(channel,sqlStatement="select * from cfdbs.loc;"){
   sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'LOC' and owner='CFDBS';"
   colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
-  return (list(data=query,sql=sqlStatement, colNames=colNames))
+  return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))
 
 }
 
