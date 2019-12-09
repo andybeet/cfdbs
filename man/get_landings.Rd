@@ -8,7 +8,8 @@ get_landings(channel, area = "all", gear = "all", year = 1994,
   tonnage = "all", species = "all", species_itis = FALSE)
 }
 \arguments{
-\item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
+\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{tonnage}{a numeric vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc}
 

@@ -5,7 +5,8 @@
 #'For direct sql usage please see \code{\link{get_anything_sql}} function
 #'
 #'
-#'@param channel an RODBC object (see \code{\link{connect_to_database}})
+#'@param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #'@param areas a numeric vector of statistical areas (area)
 #'@param gears a numeric vector of gear types (negear2)
 #'@param years a numeric vector containing the years to search over

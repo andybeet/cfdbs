@@ -3,7 +3,8 @@
 #'Extract a list of speices names, code, market category, etc from the NEFSC cfspp table
 #'
 #'
-#' @param channel an RODBC object (see \code{\link{connect_to_database}})
+#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param species a specific species code or set of codes. Either numeric or character vector. (NESPP3 codes)
 #' Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement.
 #' A Species common name can also be supplied. The character string is used to pull from SPPNM field. Defaults to "all" species.

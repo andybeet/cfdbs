@@ -4,7 +4,8 @@
 #'to write their own sql statements. For all others, please see the \code{\link{get_landings}} and other similar functions
 #'
 #'
-#' @param channel an RODBC object (see \code{\link{connect_to_database}})
+#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param sqlStatement an sql statement
 #' @return A list is returned:
 #'

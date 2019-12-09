@@ -3,7 +3,8 @@
 #'Extract a list of port names, and location info for vessel landings from the NEFSC "Port" supporting table
 #'
 #'
-#' @param channel an RODBC object (see \code{\link{connect_to_database}})
+#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param ports a specific port code or set of codes. Either numeric or character vector. Defaults to "all" ports.
 #' Numeric codes are converted to VARCHAR2(6 BYTE) when creating the sql statement. Character codes are short character strings referencing PORTNM field.
 #'

@@ -3,7 +3,8 @@
 #'Extract a list of length and ages for speices sampled in Commercial fisheries data.
 #'This data is extracted from ADIOS (MV_CF_AGE)
 #'
-#' @param channel an RODBC object (see \code{\link{connect_to_database}})
+#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param species a specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
 #' Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings.
 #' @param sex character vector. Default = "all". options "M" (male), "F" (female), "U" (unsexed)

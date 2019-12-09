@@ -3,7 +3,8 @@
 #'Extract a list of speices names, code, market category, etc from the NEFSC SPECIES_ITIS_NE table
 #'
 #'
-#' @param channel an RODBC object (see \code{\link{connect_to_database}})
+#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param species a specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
 #' Numeric codes (SPECIES_ITIS) are converted to VARCHAR2(33) when creating the sql statement. Character codes are short character strings.
 #' @param nameType either "common_name" (default) or "scientific_name". Determins which type of name to search under
