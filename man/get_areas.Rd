@@ -7,7 +7,8 @@
 get_areas(channel, areas = "all")
 }
 \arguments{
-\item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
+\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{areas}{a specific area code or set of codes. Either numeric or character vector. Defaults to "all" areas
 Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings to reference the AREANM field.}

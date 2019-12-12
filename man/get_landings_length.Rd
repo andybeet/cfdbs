@@ -8,7 +8,8 @@ get_landings_length(channel, area = "all", gear = "all", year = 1994,
   species = "all", species_itis = FALSE)
 }
 \arguments{
-\item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
+\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{species}{a numeric list of species (nespp3 or species_itis)}
 

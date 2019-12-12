@@ -7,7 +7,8 @@
 get_species_itis(channel, species = "all", nameType = "common_name")
 }
 \arguments{
-\item{channel}{an RODBC object (see \code{\link{connect_to_database}})}
+\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{species}{a specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
 Numeric codes (SPECIES_ITIS) are converted to VARCHAR2(33) when creating the sql statement. Character codes are short character strings.}
