@@ -61,7 +61,11 @@ get_species_itis <- function(channel,species="all",nameType="common_name"){
   
   # strip ; and add additional content
   sqlStatement <- sub(";","",sqlStatement)
-  sqlStatement <- paste0(sqlStatement," and NESPP4_FLAG = 1;")
+  if (tolower(species) == "all") {
+    sqlStatement <- paste0(sqlStatement," where NESPP4_FLAG = 1;")
+  } else {
+    sqlStatement <- paste0(sqlStatement," and NESPP4_FLAG = 1;")
+  }
 
   query <- DBI::dbGetQuery(channel,sqlStatement)
 
