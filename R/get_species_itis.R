@@ -58,6 +58,10 @@ get_species_itis <- function(channel,species="all",nameType="common_name"){
 
   # creates the sql based on user input
   sqlStatement <- dbutils::create_sql(species,fieldName="species_itis",fieldName2=nameType,dataType="%06d",defaultSqlStatement="select * from cfdbs.species_itis_ne")
+  
+  # strip ; and add additional content
+  sqlStatement <- sub(";","",sqlStatement)
+  sqlStatement <- paste0(sqlStatement," and NESPP4_FLAG = 1;")
 
   query <- DBI::dbGetQuery(channel,sqlStatement)
 
