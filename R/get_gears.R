@@ -3,7 +3,7 @@
 #'Extract a list of gear types in the NEFSC "GEAR" supporting table
 #'
 #'
-#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' @param channel DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 #' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param gears specific gear code or set of codes. Either numeric or character vector. Defaults to "all" gears.
 #' Numeric codes are converted to VARCHAR2(2 BYTE) when creating the sql statement. Character codes are short character strings referencing GEARNM field.

@@ -7,7 +7,7 @@
 get_species(channel, species = "all")
 }
 \arguments{
-\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+\item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{species}{a specific species code or set of codes. Either numeric or character vector. (NESPP3 codes)

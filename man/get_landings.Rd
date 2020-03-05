@@ -9,22 +9,22 @@ get_landings(channel, area = "all", gear = "all", year = 1994,
   species_itis = FALSE)
 }
 \arguments{
-\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+\item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
-\item{tonnage}{a numeric vector of tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc}
+\item{tonnage}{Numeric vector. Tonnage classes (toncl2) (1 - 8) where 1 = 10-19 tons, 2 = 20-29 tons etc}
 
-\item{species}{a numeric list of species (nespp3 or species_itis)}
+\item{species}{Numeric vector. Species codes (nespp3 or species_itis)}
 
-\item{gearCode}{character string. Relates to the codes supplied in \code{gears}. Either "NEGEAR" or "NEGEAR2".}
+\item{gearCode}{Character string. Relates to the codes supplied in \code{gears}. Either "NEGEAR" or "NEGEAR2".}
 
-\item{species_itis}{boolean value. indicating if species values are nespp3 (FALSE) or species_itis (TRUE).Default = FALSE}
+\item{species_itis}{Boolean. Indicating if species values are nespp3 (FALSE) or species_itis (TRUE).Default = FALSE}
 
-\item{areas}{a numeric vector of statistical areas (area)}
+\item{areas}{Numeric vector. Statistical areas (area)}
 
-\item{gears}{a numeric vector of gear types (negear2)}
+\item{gears}{Numeric vector. Gear types (negear2)}
 
-\item{years}{a numeric vector containing the years to search over}
+\item{years}{Numeric vector. Containing the years to search over}
 }
 \value{
 A list is returned:

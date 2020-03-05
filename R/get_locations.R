@@ -3,9 +3,11 @@
 #'Extract a list of lat, long, ten minute square, etc from the NEFSC "loc" supporting table
 #'
 #'
-#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' @param channel DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 #' to communicate with the database engine. (see \code{\link{connect_to_database}})
-#' @param sqlStatement an sql statement (optional)
+#' @param sqlStatement Character string. An sql statement (optional)
+#' 
+#' 
 #' @return A list is returned:
 #'
 #'    \item{locations}{containing the result of the executed \code{sqlStatement} }

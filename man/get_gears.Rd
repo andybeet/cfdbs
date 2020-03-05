@@ -7,7 +7,7 @@
 get_gears(channel, gears = "all")
 }
 \arguments{
-\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+\item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{gears}{specific gear code or set of codes. Either numeric or character vector. Defaults to "all" gears.

@@ -3,7 +3,7 @@
 #'Extract a list of vessell ID's, tonnage, crew size, home port, etc from the NEFSC "Mstrvess" supporting table
 #'
 #'
-#' @param channel an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+#' @param channel DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 #' to communicate with the database engine. (see \code{\link{connect_to_database}})
 #' @param sqlStatement an sql statement (optional)
 #' @param where text string appending where clause to sql

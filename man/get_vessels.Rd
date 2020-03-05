@@ -8,7 +8,7 @@ get_vessels(channel, sqlStatement = "select * from cfdbs.mstrvess",
   where = NULL)
 }
 \arguments{
-\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+\item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
 \item{sqlStatement}{an sql statement (optional)}

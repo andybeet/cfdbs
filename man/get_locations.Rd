@@ -7,10 +7,10 @@
 get_locations(channel, sqlStatement = "select * from cfdbs.loc;")
 }
 \arguments{
-\item{channel}{an Object inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
+\item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
 to communicate with the database engine. (see \code{\link{connect_to_database}})}
 
-\item{sqlStatement}{an sql statement (optional)}
+\item{sqlStatement}{Character string. An sql statement (optional)}
 }
 \value{
 A list is returned:

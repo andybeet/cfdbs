@@ -21,15 +21,17 @@ knitr::opts_chunk$set(
 
 The cfdbs package contains a set of tools to easily extract information from key tables in the commercial fisheries database and the landings data in ADIOS (MV_CF_Landings). These tools free up the user to concentrate on data analysis and visualization instead of data extraction. The following sections describe how to use these tools. Included in this package are the functions:
 
-* `connect_to_database`
 * `get_species`
+* `get_species_itis`
 * `get_areas`
 * `get_gears`
 * `get_ports`
 * `get_locations`
 * `get_vessels`
 * `get_landings`
+* `get_landings_length`
 * `get_anything_sql`
+* `get_age_length`
 
 and two data sets:
 
@@ -42,9 +44,9 @@ and two data sets:
 Before any of the functions in this package can be used a connection to the database is required. This is easily achieved by
 
 
-    channel <- connect_to_database(server="sole"","user_name")
+    channel <- dbutils::connect_to_database(server="sole"","user_name")
 
-substitute your username for "user_name". You'll be prompted to enter your password for server access. Upon success the RODBC object variable, 
+substitute your username for "user_name". You'll be prompted to enter your password for server access. Upon success the DBI object variable, 
 
     channel
     
