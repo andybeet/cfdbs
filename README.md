@@ -30,7 +30,9 @@ channel <- dbutils::connect_to_database("server", "uid")
 
 Explaination of package contents and usage can be found in the vignette:
 
+``` r
 browseVignettes("cfdbs")
+```
 
 
 
