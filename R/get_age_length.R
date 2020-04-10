@@ -23,8 +23,9 @@
 #'Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field name explanations. 
 #'Note: species codes (nespp3) are stored in the database as VARCHAR2(3 BYTE) 
 #'
-#' @seealso \code{\link{connect_to_database}}, \code{\link{get_gears}}, \code{\link{get_species}}, \code{\link{get_areas}}, \code{\link{get_locations}}
-#' , \code{\link{get_vessels}}, \code{\link{get_ports}}, \code{\link{get_anything_sql}}
+#' @family get functions
+#'
+#' @seealso \code{\link{connect_to_database}}
 #'
 #' @examples
 #' \dontrun{

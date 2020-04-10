@@ -30,8 +30,9 @@
 #'You will need to obtain read only privilages to access ADIOS! 
 #'The ADIOS landings database (MV_CF_Landings) contains 35 million records. If you try to pull the entire database it is likely you will run out of memory.
 #'
-#'@seealso \code{\link{connect_to_database}}, \code{\link{get_anything_sql}}
+#'@family get functions
 #'
+#' @seealso \code{\link{connect_to_database}}
 #'
 #'@examples
 #'\dontrun{

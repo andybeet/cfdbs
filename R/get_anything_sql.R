@@ -25,7 +25,9 @@
 #'@section Reference:
 #'Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field name explanations
 #'
-#' @seealso \code{\link{connect_to_database}}, \code{\link{get_landings}}
+#'@family get functions
+#'
+#' @seealso \code{\link{connect_to_database}}
 #'
 #' @examples
 #' \dontrun{

@@ -21,9 +21,10 @@
 #'
 #'@section Reference:
 #'Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field name explanations
-
-#' @seealso \code{\link{connect_to_database}}, , \code{\link{get_gears}}, \code{\link{get_species}}, \code{\link{get_areas}}, \code{\link{get_locations}}
-#' , \code{\link{get_vessels}}, \code{\link{get_ports}}
+#'
+#'@family get functions
+#'
+#' @seealso \code{\link{connect_to_database}}
 #'
 #' @examples
 #' \dontrun{

@@ -27,9 +27,10 @@
 #'You will need to obtain read only privilages to access ADIOS! 
 #'The ADIOS landings by length database (MV_CF_LEN) contains 1.3 million records. If you try to pull the entire database you may suffer from memory issues.
 #'
-#'@seealso \code{\link{connect_to_database}}, \code{\link{get_anything_sql}}
+#'@family get functions
 #'
-#'
+#' @seealso \code{\link{connect_to_database}}
+#' 
 #'@examples
 #'\dontrun{
 #'
