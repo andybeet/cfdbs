@@ -4,8 +4,13 @@
 \alias{get_age_length}
 \title{Extract Length at Age data CFDBS}
 \usage{
-get_age_length(channel, year = 1994, species = "all",
-  species_itis = FALSE, sex = "all")
+get_age_length(
+  channel,
+  year = 1994,
+  species = "all",
+  species_itis = FALSE,
+  sex = "all"
+)
 }
 \arguments{
 \item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
@@ -59,11 +64,16 @@ get_length_age(channel,"COD")
 \seealso{
 \code{\link{connect_to_database}}
 
-Other get functions: \code{\link{get_anything_sql}},
-  \code{\link{get_areas}}, \code{\link{get_gears}},
-  \code{\link{get_landings_length}},
-  \code{\link{get_landings}}, \code{\link{get_locations}},
-  \code{\link{get_ports}}, \code{\link{get_species_itis}},
-  \code{\link{get_species}}, \code{\link{get_vessels}}
+Other get functions: 
+\code{\link{get_anything_sql}()},
+\code{\link{get_areas}()},
+\code{\link{get_gears}()},
+\code{\link{get_landings_length}()},
+\code{\link{get_landings}()},
+\code{\link{get_locations}()},
+\code{\link{get_ports}()},
+\code{\link{get_species_itis}()},
+\code{\link{get_species}()},
+\code{\link{get_vessels}()}
 }
 \concept{get functions}

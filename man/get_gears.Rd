@@ -34,7 +34,7 @@ Use the data dictionary (\url{http://nova.nefsc.noaa.gov/datadict/}) for field n
 
 \examples{
 \dontrun{
-# extracts gear data from cfdbs.gear table based on the default \\code{sqlStatement}
+# extracts gear data from cfdbs.gear table based on the default \code{sqlStatement}
 channel <- connect_to_database(server="name_of_server",uid="individuals_username")
 get_gears(channel)
 
@@ -56,11 +56,16 @@ get_gears(channel,"seines") or
 \seealso{
 \code{\link{connect_to_database}}
 
-Other get functions: \code{\link{get_age_length}},
-  \code{\link{get_anything_sql}}, \code{\link{get_areas}},
-  \code{\link{get_landings_length}},
-  \code{\link{get_landings}}, \code{\link{get_locations}},
-  \code{\link{get_ports}}, \code{\link{get_species_itis}},
-  \code{\link{get_species}}, \code{\link{get_vessels}}
+Other get functions: 
+\code{\link{get_age_length}()},
+\code{\link{get_anything_sql}()},
+\code{\link{get_areas}()},
+\code{\link{get_landings_length}()},
+\code{\link{get_landings}()},
+\code{\link{get_locations}()},
+\code{\link{get_ports}()},
+\code{\link{get_species_itis}()},
+\code{\link{get_species}()},
+\code{\link{get_vessels}()}
 }
 \concept{get functions}

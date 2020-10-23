@@ -3,7 +3,6 @@
 \docType{package}
 \name{cfdbs}
 \alias{cfdbs}
-\alias{cfdbs-package}
 \title{cfdbs: Extract info from Database}
 \description{
 Tools to aid in extraction of data from the cfdbs database and ADIOS! (MV_CF_Landings)

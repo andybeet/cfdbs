@@ -4,8 +4,14 @@
 \alias{get_landings_length}
 \title{Extract landings data by length from ADIOS! (help from CFDBS)}
 \usage{
-get_landings_length(channel, area = "all", gear = "all", year = 1994,
-  species = "all", species_itis = FALSE)
+get_landings_length(
+  channel,
+  area = "all",
+  gear = "all",
+  year = 1994,
+  species = "all",
+  species_itis = FALSE
+)
 }
 \arguments{
 \item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
@@ -58,11 +64,16 @@ get_landings_length(channel,area=c(500,600),gear=c(1,2,10),year=c(1999),species=
 \seealso{
 \code{\link{connect_to_database}}
 
-Other get functions: \code{\link{get_age_length}},
-  \code{\link{get_anything_sql}}, \code{\link{get_areas}},
-  \code{\link{get_gears}}, \code{\link{get_landings}},
-  \code{\link{get_locations}}, \code{\link{get_ports}},
-  \code{\link{get_species_itis}},
-  \code{\link{get_species}}, \code{\link{get_vessels}}
+Other get functions: 
+\code{\link{get_age_length}()},
+\code{\link{get_anything_sql}()},
+\code{\link{get_areas}()},
+\code{\link{get_gears}()},
+\code{\link{get_landings}()},
+\code{\link{get_locations}()},
+\code{\link{get_ports}()},
+\code{\link{get_species_itis}()},
+\code{\link{get_species}()},
+\code{\link{get_vessels}()}
 }
 \concept{get functions}

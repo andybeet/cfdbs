@@ -4,12 +4,14 @@
 \name{fleets}
 \alias{fleets}
 \title{Fleet structure and gear type associations (CFDBS)}
-\format{A list containing 3 elements
+\format{
+A list containing 3 elements
 \describe{
     \item{codes}{a vector of unique gear codes}
     \item{names}{a character vector of fleet names}
     \item{data}{a list of 17 fleets with associated gear types}
-}}
+}
+}
 \source{
 The fleet/gear associates were a collaborative effort among staff at the ecosystem dynamics and assessment branch (EDAB) at the NEFSC
 }

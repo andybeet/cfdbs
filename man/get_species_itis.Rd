@@ -61,12 +61,16 @@ get_species_itis(channel,species= c("164712","168559"))
 \seealso{
 \code{\link{connect_to_database}}
 
-Other get functions: \code{\link{get_age_length}},
-  \code{\link{get_anything_sql}}, \code{\link{get_areas}},
-  \code{\link{get_gears}},
-  \code{\link{get_landings_length}},
-  \code{\link{get_landings}}, \code{\link{get_locations}},
-  \code{\link{get_ports}}, \code{\link{get_species}},
-  \code{\link{get_vessels}}
+Other get functions: 
+\code{\link{get_age_length}()},
+\code{\link{get_anything_sql}()},
+\code{\link{get_areas}()},
+\code{\link{get_gears}()},
+\code{\link{get_landings_length}()},
+\code{\link{get_landings}()},
+\code{\link{get_locations}()},
+\code{\link{get_ports}()},
+\code{\link{get_species}()},
+\code{\link{get_vessels}()}
 }
 \concept{get functions}

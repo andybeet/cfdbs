@@ -4,8 +4,11 @@
 \alias{get_vessels}
 \title{Extract VESSEL information from CFDBS}
 \usage{
-get_vessels(channel, sqlStatement = "select * from cfdbs.mstrvess",
-  where = NULL)
+get_vessels(
+  channel,
+  sqlStatement = "select * from cfdbs.mstrvess",
+  where = NULL
+)
 }
 \arguments{
 \item{channel}{DBI Object. Inherited from \link[DBI]{DBIConnection-class}. This object is used to connect
@@ -55,12 +58,16 @@ get_vessels(channel,sqlStatement)
 \seealso{
 \code{\link{connect_to_database}}
 
-Other get functions: \code{\link{get_age_length}},
-  \code{\link{get_anything_sql}}, \code{\link{get_areas}},
-  \code{\link{get_gears}},
-  \code{\link{get_landings_length}},
-  \code{\link{get_landings}}, \code{\link{get_locations}},
-  \code{\link{get_ports}}, \code{\link{get_species_itis}},
-  \code{\link{get_species}}
+Other get functions: 
+\code{\link{get_age_length}()},
+\code{\link{get_anything_sql}()},
+\code{\link{get_areas}()},
+\code{\link{get_gears}()},
+\code{\link{get_landings_length}()},
+\code{\link{get_landings}()},
+\code{\link{get_locations}()},
+\code{\link{get_ports}()},
+\code{\link{get_species_itis}()},
+\code{\link{get_species}()}
 }
 \concept{get functions}
