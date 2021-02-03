@@ -1,6 +1,6 @@
 # cfdbs
 
-![gitleaks](https://github.com/NOAA-EDAB/LeMANS/workflows/gitleaks/badge.svg)
+![gitleaks](https://github.com/NOAA-EDAB/cfdbs/workflows/gitleaks/badge.svg)
 
 
 A suite of tools to easily extract data from cfdbs and the landings table of ADIOS
