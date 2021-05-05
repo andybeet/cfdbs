@@ -61,6 +61,7 @@ Other get functions:
 \code{\link{get_anything_sql}()},
 \code{\link{get_gears}()},
 \code{\link{get_landings_length}()},
+\code{\link{get_landings_palmer}()},
 \code{\link{get_landings}()},
 \code{\link{get_locations}()},
 \code{\link{get_ports}()},
