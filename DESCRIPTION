@@ -21,6 +21,8 @@ Imports:
     DBI,
     odbc,
     dplyr
+Remotes:
+    andybeet/dbutils
 RoxygenNote: 7.1.1
 Suggests: knitr,
     rmarkdown
