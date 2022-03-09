@@ -87,7 +87,7 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
   #  need to have length and numlen in ADIOS for comlens script to work
 
   # eventually user will be able to pass these variables
-  sqlStatement <- "select year, nespp3, nespp4, species_itis, sex, age, length  
+  sqlStatement <- "select year, AREA, QTR, NEGEAR, sex, age, length, numage  
                     from stockeff.mv_cf_age"
 
   sqlStatement <- paste(sqlStatement,whereStr)
@@ -96,9 +96,13 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
   query <- DBI::dbGetQuery(channel,sqlStatement)
 
   # column names
-  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MV_CF_LANDINGS' and owner='STOCKEFF';"
+  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'MV_CF_AGE' and owner='STOCKEFF';"
   colNames <- DBI::dbGetQuery(channel,sqlcolName)
-
+  
+  query$YEAR <- as.integer(query$YEAR)
+  query$SEX  <- as.integer(query$SEX)
+  query$QTR <- as.numeric(query$QTR)
+  
   return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))
 }
 
