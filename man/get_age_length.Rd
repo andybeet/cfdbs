@@ -9,7 +9,8 @@ get_age_length(
   year = 1994,
   species = "all",
   species_itis = FALSE,
-  sex = "all"
+  sex = "all",
+  area = "all"
 )
 }
 \arguments{
@@ -20,6 +21,8 @@ to communicate with the database engine. (see \code{\link{connect_to_database}})
 Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings.}
 
 \item{sex}{Character vector. Default = "all". options "M" (male), "F" (female), "U" (unsexed)}
+
+\item{area}{Character or numeric vector. Statistical areas from which to pull ages. Default = "all"}
 }
 \value{
 A list is returned:

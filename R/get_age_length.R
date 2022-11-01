@@ -8,6 +8,7 @@
 #' @param species A specific species code or set of codes. Either numeric or character vector. Defaults to "all" species.
 #' Numeric codes are converted to VARCHAR2(3 BYTE) when creating the sql statement. Character codes are short character strings.
 #' @param sex Character vector. Default = "all". options "M" (male), "F" (female), "U" (unsexed)
+#' @param area Character or numeric vector. Statistical areas from which to pull ages. Default = "all"
 #'
 #' @return A list is returned:
 #'
@@ -48,7 +49,7 @@
 #' @export
 
 
-get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE, sex="all"){
+get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE, sex="all", area = "all"){
 
   # create an SQL query to extract all relavent data from tables
   # list of strings to build where clause in sql statement
@@ -71,7 +72,10 @@ get_age_length <- function(channel, year=1994, species="all", species_itis=FALSE
   }
 
   whereVec[[4]] <-  paste("sex in (",toString(sex),")")
-
+  
+  # add area
+  whereVec[[5]] <-  dbutils::createString(itemName="area",area,convertToCharacter=TRUE,numChars=3)
+  
   # build where clause of SQL statement based on input above
   whereStr <- "where"
   for (item in whereVec) {
