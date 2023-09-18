@@ -60,7 +60,7 @@ get_ports <- function(channel,ports="all"){
 
   #save(species,file="data/speciesDefinitions.RData")
   # get column names
-  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'PORT' and owner='CFDBS';"
+  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'PORT' and owner='CFDBS'"
   colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
   return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))

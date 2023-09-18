@@ -63,15 +63,15 @@ get_species_itis <- function(channel,species="all",nameType="common_name"){
   # strip ; and add additional content
   sqlStatement <- sub(";","",sqlStatement)
   if (tolower(species) == "all") {
-    sqlStatement <- paste0(sqlStatement," where NESPP4_FLAG = 1;")
+    sqlStatement <- paste0(sqlStatement," where NESPP4_FLAG = 1")
   } else {
-    sqlStatement <- paste0(sqlStatement," and NESPP4_FLAG = 1;")
+    sqlStatement <- paste0(sqlStatement," and NESPP4_FLAG = 1")
   }
 
   query <- DBI::dbGetQuery(channel,sqlStatement)
 
   # get column names
-  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'SPECIES_ITIS_NE' and owner='CFDBS';"
+  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'SPECIES_ITIS_NE' and owner='CFDBS'"
   colNames <- t(DBI::dbGetQuery(channel,sqlcolName))
 
   return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))

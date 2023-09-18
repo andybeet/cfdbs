@@ -62,7 +62,7 @@ get_gears <- function(channel,gears="all") {
   query <- DBI::dbGetQuery(channel,sqlStatement)
 
 # get column names
-  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'GEAR' and owner='CFDBS';"
+  sqlcolName <- "select COLUMN_NAME from ALL_TAB_COLUMNS where TABLE_NAME = 'GEAR' and owner='CFDBS'"
   colNames <- DBI::dbGetQuery(channel,sqlcolName)
 
   return (list(data=dplyr::as_tibble(query),sql=sqlStatement, colNames=colNames))
